@@ -1,4 +1,6 @@
-package org.example.investtrack.Domain.model.cliente;
+package org.example.investtrack.Domain.port.out;
+
+import org.example.investtrack.Domain.model.cliente.Cliente;
 
 import java.util.List;
 import java.util.Optional;
