@@ -1,6 +1,6 @@
-package org.example.investtrack.Domain.model.cliente;
+package org.example.investtrack.adapters.inbound.dto;
 
 import java.time.LocalDateTime;
 
-public record ClienteRequestDTO(String nome, String cpf, String email, LocalDateTime created) {
+public record ClienteRequestDTO(String nome, String cpf, String email, LocalDateTime data_cadastro) {
 }
