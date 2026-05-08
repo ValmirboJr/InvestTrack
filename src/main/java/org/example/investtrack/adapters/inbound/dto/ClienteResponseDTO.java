@@ -1,4 +1,4 @@
-package org.example.investtrack.Domain.model.cliente;
+package org.example.investtrack.adapters.inbound.dto;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
