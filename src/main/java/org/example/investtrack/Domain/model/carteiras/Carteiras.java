@@ -1,4 +1,4 @@
-package org.example.investtrack.Domain.entity.carteiras;
+package org.example.investtrack.Domain.model.carteiras;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
