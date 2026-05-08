@@ -1,6 +1,5 @@
-package org.example.investtrack.Domain.entity.cliente;
+package org.example.investtrack.Domain.model.cliente;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
@@ -60,5 +59,9 @@ public class Cliente {
 
     public void setData_cadastro(LocalDateTime data_cadastro) {
         this.data_cadastro = data_cadastro;
+    }
+
+    public static Cliente criar(String nome, String cpf,String email, LocalDateTime data_cadastro) {
+        return new Cliente(UUID.randomUUID(), nome, cpf,email, data_cadastro);
     }
 }
