@@ -1,7 +1,7 @@
 package org.example.investtrack.adapters.outbound.repositories;
 
 import org.example.investtrack.Domain.model.cliente.Cliente;
-import org.example.investtrack.Domain.model.cliente.ClienteRepositoryPort;
+import org.example.investtrack.Domain.port.out.ClienteRepositoryPort;
 import org.example.investtrack.adapters.outbound.entities.JpaClienteEntity;
 import org.example.investtrack.adapters.outbound.mapper.ClienteMapper;
 import org.springframework.stereotype.Component;
@@ -12,11 +12,11 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Component
-public class ClienteRepositoryPortAdapter implements ClienteRepositoryPort {
+public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
 
     private final JpaClienteRespository jpaClienteRespository;
 
-    public ClienteRepositoryPortAdapter(JpaClienteRespository jpaClienteRespository) {
+    public ClienteRepositoryAdapter(JpaClienteRespository jpaClienteRespository) {
         this.jpaClienteRespository = jpaClienteRespository;
     }
 
@@ -24,12 +24,12 @@ public class ClienteRepositoryPortAdapter implements ClienteRepositoryPort {
     public Cliente save(Cliente cliente) {
         JpaClienteEntity clienteEntity = ClienteMapper.toEntity(cliente);
         JpaClienteEntity savedClienteEntity = jpaClienteRespository.save(clienteEntity);
-        return ClienteMapper.toDomain(savedClienteEntity);
+        return ClienteMapper.toListarCliente(savedClienteEntity);
     }
 
     @Override
     public Optional<Cliente> findById(UUID id) {
-        return this.jpaClienteRespository.findById(id).map(ClienteMapper::toDomain);
+        return this.jpaClienteRespository.findById(id).map(ClienteMapper::toListarCliente);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ClienteRepositoryPortAdapter implements ClienteRepositoryPort {
         if (jpaClienteRespository.existsById(id)){
             JpaClienteEntity clienteEntity = ClienteMapper.toEntity(cliente);
             JpaClienteEntity savedClienteEntity = jpaClienteRespository.save(clienteEntity);
-            return Optional.of(ClienteMapper.toDomain(savedClienteEntity));
+            return Optional.of(ClienteMapper.toListarCliente(savedClienteEntity));
         }
         return Optional.empty();
     }
