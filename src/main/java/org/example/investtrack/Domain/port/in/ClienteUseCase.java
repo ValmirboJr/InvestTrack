@@ -1,16 +1,15 @@
-package org.example.investtrack.config.usecases;
+package org.example.investtrack.Domain.port.in;
 
 import org.example.investtrack.Domain.model.cliente.Cliente;
-import org.example.investtrack.Domain.model.cliente.ClienteRequestDTO;
-import org.example.investtrack.Domain.model.cliente.ClienteResponseDTO;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public interface ClienteUseCase {
-    Cliente create(ClienteRequestDTO request);
-    List<ClienteResponseDTO> buscarPorId(UUID id);
+    Cliente create(Cliente cliente);
+    Optional<Cliente> buscarPorId(UUID id);
     void delete(UUID id);
-    Cliente alterar(UUID idCliente, Cliente cliente);
-    void deleteCliente(UUID idCliente);
+    Optional<Cliente> alterar(UUID idCliente, Cliente cliente);
+    List<Cliente> ListarClientes();
 }
