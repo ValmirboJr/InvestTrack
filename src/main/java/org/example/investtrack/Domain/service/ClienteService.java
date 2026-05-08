@@ -1,4 +1,4 @@
-package org.example.investtrack.config.service;
+package org.example.investtrack.Domain.service;
 
 import org.example.investtrack.Domain.model.cliente.Cliente;
 import org.example.investtrack.Domain.port.out.ClienteRepositoryPort;
