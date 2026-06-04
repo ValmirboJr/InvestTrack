@@ -48,11 +48,16 @@ public class ClienteRepositoryAdapter implements ClienteRepositoryPort {
 
     @Override
     public Optional<Cliente> update(UUID id, Cliente cliente) {
-        if (jpaClienteRespository.existsById(id)){
-            JpaClienteEntity clienteEntity = ClienteMapper.toEntity(cliente);
-            JpaClienteEntity savedClienteEntity = jpaClienteRespository.save(clienteEntity);
-            return Optional.of(ClienteMapper.toListarCliente(savedClienteEntity));
+        if (!jpaClienteRespository.existsById(id)) {
+            return Optional.empty();
         }
-        return Optional.empty();
+
+        JpaClienteEntity clienteEntity = jpaClienteRespository.findById(id).orElseThrow();
+        clienteEntity.setNome(cliente.getNome());
+        clienteEntity.setCpf(cliente.getCpf());
+        clienteEntity.setEmail(cliente.getEmail());
+
+        JpaClienteEntity savedClienteEntity = jpaClienteRespository.save(clienteEntity);
+        return Optional.of(ClienteMapper.toListarCliente(savedClienteEntity));
     }
 }

@@ -42,4 +42,19 @@ public class ClienteController {
         List<Cliente> clientes = clienteUseCase.ListarClientes();
         return new ResponseEntity<>(ClienteDTOMapper.fromDomain(clientes), HttpStatus.OK);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ClienteResponseDTO> alterar(@PathVariable UUID id, @RequestBody ClienteRequestDTO payload) {
+        Cliente cliente = ClienteDTOMapper.toDomain(payload);
+        Optional<Cliente> clienteAtualizado = clienteUseCase.alterar(id, cliente);
+
+        return clienteAtualizado.map(value -> new ResponseEntity<>(ClienteDTOMapper.fromDomain(value), HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable UUID id) {
+        clienteUseCase.delete(id);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
