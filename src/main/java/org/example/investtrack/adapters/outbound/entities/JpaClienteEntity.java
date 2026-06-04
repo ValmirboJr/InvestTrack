@@ -20,7 +20,6 @@ import java.util.UUID;
 public class JpaClienteEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
     private String nome;
     private String cpf;
