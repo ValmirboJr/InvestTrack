@@ -47,7 +47,7 @@ public class OperacoesRepositoryAdapter implements OperacoesRepositoryPort {
     public Optional<Operacoes> update(UUID id, Operacoes operacoes) {
         return jpaOperacoesRepository.findById(id)
                 .map(entity -> {
-                    entity.setId_carteira(operacoes.getId_carteira());
+                    entity.setIdCarteira(operacoes.getId_carteira());
                     entity.setTicker(operacoes.getTicker());
                     entity.setTipo(operacoes.getTipo());
                     entity.setQuantidade(operacoes.getQuantidade());

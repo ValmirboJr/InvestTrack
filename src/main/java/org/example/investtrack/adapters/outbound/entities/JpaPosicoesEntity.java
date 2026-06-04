@@ -10,41 +10,38 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.investtrack.Domain.model.operacoes.Tipo;
+import org.example.investtrack.Domain.model.posicoes.Ativo;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "operacao")
+@Table(name = "posicao")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class JpaOperacoesEntity {
+public class JpaPosicoesEntity {
 
     @Id
     @Column(name = "id")
-    private UUID idOperacao;
+    private UUID idPosicao;
 
     @Column(name = "portfolio_id")
     private UUID idCarteira;
 
     private String ticker;
 
-    @Enumerated(EnumType.STRING)
-    private Tipo tipo;
-
     private int quantidade;
 
-    @Column(name = "preco_unitario")
-    private BigDecimal precoUnitario;
+    @Column(name = "preco_medio")
+    private BigDecimal precoMedio;
 
-    @Column(name = "data_operacao")
-    private Date dataOpc;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "classe_ativo")
+    private Ativo ativo;
 
-    @Column(name = "criado_em")
-    private LocalDateTime dataCriacao;
+    @Column(name = "atualizado_em")
+    private LocalDateTime atualizadoEm;
 }

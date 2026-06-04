@@ -2,49 +2,38 @@ package org.example.investtrack.adapters.outbound.entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.investtrack.Domain.model.operacoes.Tipo;
 
-import java.math.BigDecimal;
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "operacao")
+@Table(name = "portfolio")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class JpaOperacoesEntity {
+public class JpaCarteirasEntity {
 
     @Id
     @Column(name = "id")
-    private UUID idOperacao;
-
-    @Column(name = "portfolio_id")
     private UUID idCarteira;
 
-    private String ticker;
+    @Column(name = "cliente_id")
+    private UUID idCliente;
 
-    @Enumerated(EnumType.STRING)
-    private Tipo tipo;
+    private String nome;
 
-    private int quantidade;
-
-    @Column(name = "preco_unitario")
-    private BigDecimal precoUnitario;
-
-    @Column(name = "data_operacao")
-    private Date dataOpc;
+    private String descricao;
 
     @Column(name = "criado_em")
     private LocalDateTime dataCriacao;
+
+    @Column(name = "atualizado_em")
+    private LocalDateTime atualizadoEm;
 }

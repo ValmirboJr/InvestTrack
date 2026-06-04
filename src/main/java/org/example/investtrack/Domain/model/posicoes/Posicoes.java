@@ -1,4 +1,4 @@
-package org.example.investtrack.Domain.entity.posicoes;
+package org.example.investtrack.Domain.model.posicoes;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

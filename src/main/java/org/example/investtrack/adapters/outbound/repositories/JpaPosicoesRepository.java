@@ -1,0 +1,9 @@
+package org.example.investtrack.adapters.outbound.repositories;
+
+import org.example.investtrack.adapters.outbound.entities.JpaPosicoesEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.UUID;
+
+public interface JpaPosicoesRepository extends JpaRepository<JpaPosicoesEntity, UUID> {
+}

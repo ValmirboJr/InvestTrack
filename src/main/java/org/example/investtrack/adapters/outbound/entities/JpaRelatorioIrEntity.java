@@ -10,40 +10,40 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.investtrack.Domain.model.operacoes.Tipo;
+import org.example.investtrack.Domain.model.relatorios.Statusimp;
 
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "operacao")
+@Table(name = "apuracao_ir")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class JpaOperacoesEntity {
+public class JpaRelatorioIrEntity {
 
     @Id
     @Column(name = "id")
-    private UUID idOperacao;
+    private UUID idRelatorio;
 
     @Column(name = "portfolio_id")
     private UUID idCarteira;
 
-    private String ticker;
+    private String competencia;
+
+    @Column(name = "resultado_swing_trade")
+    private BigDecimal resultadoSwingTrade;
+
+    @Column(name = "resultado_day_trade")
+    private BigDecimal resultadoDayTrade;
+
+    @Column(name = "ir_devido")
+    private BigDecimal irDevido;
 
     @Enumerated(EnumType.STRING)
-    private Tipo tipo;
-
-    private int quantidade;
-
-    @Column(name = "preco_unitario")
-    private BigDecimal precoUnitario;
-
-    @Column(name = "data_operacao")
-    private Date dataOpc;
+    private Statusimp status;
 
     @Column(name = "criado_em")
     private LocalDateTime dataCriacao;

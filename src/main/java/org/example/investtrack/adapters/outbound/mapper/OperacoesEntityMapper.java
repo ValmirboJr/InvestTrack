@@ -9,8 +9,8 @@ public class OperacoesEntityMapper {
 
     public static Operacoes toDomain(JpaOperacoesEntity entity) {
         return new Operacoes(
-                entity.getId_operacao(),
-                entity.getId_carteira(),
+                entity.getIdOperacao(),
+                entity.getIdCarteira(),
                 entity.getTicker(),
                 entity.getTipo(),
                 entity.getQuantidade(),
